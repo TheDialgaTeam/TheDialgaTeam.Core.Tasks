@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>TheDialgaTeam.Core.Task</AssemblyName>
+    <RootNamespace>TheDialgaTeam.Core.Task</RootNamespace>
+    <TargetFrameworks>netstandard2.1;netstandard2.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <PackageId>TheDialgaTeam.Core.Task</PackageId>
+    <Version>0.0.1.0</Version>
+    <Authors>Yong Jian Ming</Authors>
+    <Company>TheDialgaTeam</Company>
+    <Product>TheDialgaTeam.Core.Task</Product>
+    <Description>The Dialga Team core task module.</Description>
+    <PackageProjectUrl>https://github.com/TheDialgaTeam/TheDialgaTeam.Core.Task</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/TheDialgaTeam/TheDialgaTeam.Core.Task</RepositoryUrl>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Configurations>Debug_linux;Release_linux;Debug_osx;Release_osx;Debug_win;Release_win</Configurations>
+    <Platforms>arm;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug_linux' OR '$(Configuration)'=='Debug_osx' OR '$(Configuration)'=='Debug_win'">
+    <DefineConstants>DEBUG</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release_linux' OR '$(Configuration)'=='Release_osx' OR '$(Configuration)'=='Release_win'">
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+</Project>
