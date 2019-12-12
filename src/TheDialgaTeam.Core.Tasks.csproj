@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>TheDialgaTeam.Core.Task</AssemblyName>
-    <RootNamespace>TheDialgaTeam.Core.Task</RootNamespace>
+    <AssemblyName>TheDialgaTeam.Core.Tasks</AssemblyName>
+    <RootNamespace>TheDialgaTeam.Core.Tasks</RootNamespace>
     <TargetFrameworks>netstandard2.1;netstandard2.0</TargetFrameworks>
     <OutputType>Library</OutputType>
-    <PackageId>TheDialgaTeam.Core.Task</PackageId>
+    <PackageId>TheDialgaTeam.Core.Tasks</PackageId>
     <Version>0.0.1.0</Version>
     <Authors>Yong Jian Ming</Authors>
     <Company>TheDialgaTeam</Company>
-    <Product>TheDialgaTeam.Core.Task</Product>
+    <Product>TheDialgaTeam.Core.Tasks</Product>
     <Description>The Dialga Team core task module.</Description>
-    <PackageProjectUrl>https://github.com/TheDialgaTeam/TheDialgaTeam.Core.Task</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/TheDialgaTeam/TheDialgaTeam.Core.Task</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/TheDialgaTeam/TheDialgaTeam.Core.Tasks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/TheDialgaTeam/TheDialgaTeam.Core.Tasks</RepositoryUrl>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Configurations>Debug_linux;Release_linux;Debug_osx;Release_osx;Debug_win;Release_win</Configurations>
     <Platforms>arm;x64;x86</Platforms>

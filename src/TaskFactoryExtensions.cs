@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TheDialgaTeam.Core.Task
+namespace TheDialgaTeam.Core.Tasks
 {
     public static class TaskFactoryExtensions
     {
