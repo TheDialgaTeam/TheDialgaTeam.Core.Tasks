@@ -32,7 +32,7 @@ namespace TheDialgaTeam.Core.Tasks
             }
         }
 
-        public static System.Threading.Tasks.Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state)
+        public static Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state)
         {
             return taskFactory.StartNew(innerState =>
             {
@@ -41,7 +41,7 @@ namespace TheDialgaTeam.Core.Tasks
             }, new TaskActionState<TState>(action, state));
         }
 
-        public static System.Threading.Tasks.Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state, CancellationToken cancellationToken)
+        public static Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state, CancellationToken cancellationToken)
         {
             return taskFactory.StartNew(innerState =>
             {
@@ -50,7 +50,7 @@ namespace TheDialgaTeam.Core.Tasks
             }, new TaskActionState<TState>(action, state), cancellationToken);
         }
 
-        public static System.Threading.Tasks.Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state, TaskCreationOptions creationOptions)
+        public static Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state, TaskCreationOptions creationOptions)
         {
             return taskFactory.StartNew(innerState =>
             {
@@ -59,7 +59,7 @@ namespace TheDialgaTeam.Core.Tasks
             }, new TaskActionState<TState>(action, state), creationOptions);
         }
 
-        public static System.Threading.Tasks.Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler)
+        public static Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler)
         {
             return taskFactory.StartNew(innerState =>
             {
