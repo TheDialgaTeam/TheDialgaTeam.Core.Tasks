@@ -6,32 +6,6 @@ namespace TheDialgaTeam.Core.Tasks
 {
     public static class TaskFactoryExtensions
     {
-        private class TaskActionState<TState>
-        {
-            public Action<TState> Action { get; }
-
-            public TState State { get; }
-
-            public TaskActionState(Action<TState> action, TState state)
-            {
-                Action = action;
-                State = state;
-            }
-        }
-
-        private class TaskFunctionState<TResult, TState>
-        {
-            public Func<TState, TResult> Function { get; }
-
-            public TState State { get; }
-
-            public TaskFunctionState(Func<TState, TResult> function, TState state)
-            {
-                Function = function;
-                State = state;
-            }
-        }
-
         public static Task StartNew<TState>(this TaskFactory taskFactory, Action<TState> action, TState state)
         {
             return taskFactory.StartNew(innerState =>
@@ -68,48 +42,48 @@ namespace TheDialgaTeam.Core.Tasks
             }, new TaskActionState<TState>(action, state), cancellationToken, creationOptions, scheduler);
         }
 
-        public static Task<TResult> StartNew<TResult, TState>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state)
+        public static Task<TResult> StartNew<TState, TResult>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state)
         {
             return taskFactory.StartNew(innerState =>
             {
-                if (innerState is TaskFunctionState<TResult, TState> stateCast)
+                if (innerState is TaskFunctionState<TState, TResult> stateCast)
                     return stateCast.Function(stateCast.State);
 
                 return default;
-            }, new TaskFunctionState<TResult, TState>(function, state));
+            }, new TaskFunctionState<TState, TResult>(function, state));
         }
 
-        public static Task<TResult> StartNew<TResult, TState>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state, CancellationToken cancellationToken)
+        public static Task<TResult> StartNew<TState, TResult>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state, CancellationToken cancellationToken)
         {
             return taskFactory.StartNew(innerState =>
             {
-                if (innerState is TaskFunctionState<TResult, TState> stateCast)
+                if (innerState is TaskFunctionState<TState, TResult> stateCast)
                     return stateCast.Function(stateCast.State);
 
                 return default;
-            }, new TaskFunctionState<TResult, TState>(function, state), cancellationToken);
+            }, new TaskFunctionState<TState, TResult>(function, state), cancellationToken);
         }
 
-        public static Task<TResult> StartNew<TResult, TState>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state, TaskCreationOptions creationOptions)
+        public static Task<TResult> StartNew<TState, TResult>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state, TaskCreationOptions creationOptions)
         {
             return taskFactory.StartNew(innerState =>
             {
-                if (innerState is TaskFunctionState<TResult, TState> stateCast)
+                if (innerState is TaskFunctionState<TState, TResult> stateCast)
                     return stateCast.Function(stateCast.State);
 
                 return default;
-            }, new TaskFunctionState<TResult, TState>(function, state), creationOptions);
+            }, new TaskFunctionState<TState, TResult>(function, state), creationOptions);
         }
 
-        public static Task<TResult> StartNew<TResult, TState>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler)
+        public static Task<TResult> StartNew<TState, TResult>(this TaskFactory taskFactory, Func<TState, TResult> function, TState state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler)
         {
             return taskFactory.StartNew(innerState =>
             {
-                if (innerState is TaskFunctionState<TResult, TState> stateCast)
+                if (innerState is TaskFunctionState<TState, TResult> stateCast)
                     return stateCast.Function(stateCast.State);
 
                 return default;
-            }, new TaskFunctionState<TResult, TState>(function, state), cancellationToken, creationOptions, scheduler);
+            }, new TaskFunctionState<TState, TResult>(function, state), cancellationToken, creationOptions, scheduler);
         }
     }
 }
