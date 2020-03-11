@@ -53,7 +53,9 @@ namespace TheDialgaTeam.Core.Tasks
             task.ContinueWith(innerTask =>
             {
                 if (innerTask.Exception != null)
+                {
                     UnhandledException?.Invoke(innerTask, new UnhandledExceptionEventArgs(innerTask.Exception, false));
+                }
             }, cancellationToken);
         }
 
@@ -62,10 +64,14 @@ namespace TheDialgaTeam.Core.Tasks
             task.ContinueWith(innerTask =>
             {
                 if (innerTask.Exception != null)
+                {
                     UnhandledException?.Invoke(innerTask, new UnhandledExceptionEventArgs(innerTask.Exception, false));
+                }
 
                 if (innerTask.Result is Task innerResultTask)
+                {
                     CatchUnhandledException(innerResultTask, cancellationToken);
+                }
             }, cancellationToken);
         }
     }

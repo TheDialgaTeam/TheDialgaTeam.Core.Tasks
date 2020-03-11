@@ -11,7 +11,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskActionState<TState> stateCast)
+                {
                     stateCast.Action(stateCast.State);
+                }
             }, new TaskActionState<TState>(action, state));
         }
 
@@ -20,7 +22,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskActionState<TState> stateCast)
+                {
                     stateCast.Action(stateCast.State);
+                }
             }, new TaskActionState<TState>(action, state), cancellationToken);
         }
 
@@ -29,7 +33,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskActionState<TState> stateCast)
+                {
                     stateCast.Action(stateCast.State);
+                }
             }, new TaskActionState<TState>(action, state), creationOptions);
         }
 
@@ -38,7 +44,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskActionState<TState> stateCast)
+                {
                     stateCast.Action(stateCast.State);
+                }
             }, new TaskActionState<TState>(action, state), cancellationToken, creationOptions, scheduler);
         }
 
@@ -47,7 +55,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskFunctionState<TState, TResult> stateCast)
+                {
                     return stateCast.Function(stateCast.State);
+                }
 
                 return default;
             }, new TaskFunctionState<TState, TResult>(function, state));
@@ -58,7 +68,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskFunctionState<TState, TResult> stateCast)
+                {
                     return stateCast.Function(stateCast.State);
+                }
 
                 return default;
             }, new TaskFunctionState<TState, TResult>(function, state), cancellationToken);
@@ -69,7 +81,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskFunctionState<TState, TResult> stateCast)
+                {
                     return stateCast.Function(stateCast.State);
+                }
 
                 return default;
             }, new TaskFunctionState<TState, TResult>(function, state), creationOptions);
@@ -80,7 +94,9 @@ namespace TheDialgaTeam.Core.Tasks
             return taskFactory.StartNew(innerState =>
             {
                 if (innerState is TaskFunctionState<TState, TResult> stateCast)
+                {
                     return stateCast.Function(stateCast.State);
+                }
 
                 return default;
             }, new TaskFunctionState<TState, TResult>(function, state), cancellationToken, creationOptions, scheduler);
